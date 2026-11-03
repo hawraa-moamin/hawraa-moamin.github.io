@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawraa Moamin · Signed CV</title>
+<meta name="description" content="Hawraa Moamin: computer-vision researcher moving toward the security of agentic AI. This CV is Ed25519-signed and verifies in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fa; --card: #ffffff; --ink: #14213d; --body: #2b3445; --muted: #5d6779;
+    --accent: #0f766e; --accent-soft: #e6f4f2; --rule: #dfe3ea;
+    --ok: #15803d; --ok-soft: #e8f6ec; --bad: #b42318; --bad-soft: #fdecea; --pending: #8a94a6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1220; --card: #141b2d; --ink: #eef2f8; --body: #c9d1de; --muted: #8f9bb0;
+      --accent: #2dd4bf; --accent-soft: #10302e; --rule: #26304a;
+      --ok: #4ade80; --ok-soft: #10291a; --bad: #f87171; --bad-soft: #2f1414; --pending: #6b7690;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--body); font: 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: var(--accent); }
+  .mono, code { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+  header.hero { padding: 56px 0 28px; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(36px, 7vw, 56px); line-height: 1.02; letter-spacing: -.025em; color: var(--ink); margin: 10px 0 14px; font-weight: 800; }
+  .lede { font-size: 19px; max-width: 680px; color: var(--ink); margin: 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--rule); color: var(--ink); background: var(--card); }
+  .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .card { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 24px; }
+  #verify { margin: 8px 0 40px; }
+  .vhead { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; padding: 6px 12px; border-radius: 999px; font-size: 15px; background: var(--accent-soft); color: var(--accent); }
+  .badge.ok { background: var(--ok-soft); color: var(--ok); }
+  .badge.bad { background: var(--bad-soft); color: var(--bad); }
+  .vhead h2 { margin: 0; font-size: 22px; color: var(--ink); }
+  .vsub { color: var(--muted); margin: 6px 0 18px; font-size: 15px; }
+  ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  ol.steps li > div { min-width: 0; }
+  ol.steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 12px; }
+  .dot { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 800; color: #fff; background: var(--pending); margin-top: 1px; }
+  .dot.ok { background: var(--ok); } .dot.bad { background: var(--bad); }
+  .st { font-weight: 600; color: var(--ink); }
+  .sd { font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+  .hash { font-size: 12.5px; word-break: break-all; color: var(--body); margin-top: 4px; }
+  .hash .diff { background: var(--bad-soft); color: var(--bad); border-radius: 2px; }
+  .tamper { margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--rule); }
+  .tamper button { font: inherit; font-weight: 600; font-size: 15px; padding: 9px 14px; border-radius: 10px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); cursor: pointer; }
+  .tamper button:hover { border-color: var(--accent); }
+  #tamperOut { margin-top: 12px; font-size: 14px; }
+
+  section.cv { margin: 0 0 40px; }
+  h3.sec { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); max-width: 520px; gap: 12px; }
+  .stat { background: var(--accent-soft); border-radius: 12px; padding: 14px; }
+  .stat .n { font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: -.01em; line-height: 1.1; }
+  .stat .l { font-size: 13px; color: var(--muted); line-height: 1.35; margin-top: 4px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .grid3 .card { padding: 18px; }
+  .grid3 b { display: block; color: var(--ink); margin-bottom: 4px; }
+  .grid3 p { margin: 0; font-size: 15px; }
+  .entry { margin-bottom: 16px; }
+  .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .what { font-weight: 700; color: var(--ink); }
+  .when, .where { color: var(--muted); font-size: 14px; }
+  .entry p { margin: 4px 0 0; font-size: 15px; }
+  .me { font-weight: 700; color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  .pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 6px; background: var(--ink); color: var(--bg); margin-right: 6px; }
+  .pill.soft { background: var(--accent-soft); color: var(--accent); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  dl.skills { margin: 0; } dl.skills dt { font-weight: 700; color: var(--ink); font-size: 15px; } dl.skills dd { margin: 0 0 10px; font-size: 15px; }
+
+  .how ol { padding-left: 20px; } .how li { margin-bottom: 8px; }
+  .callout { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; margin: 16px 0; }
+  pre { background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; padding: 14px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+  .facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; font-size: 14px; }
+  .facts dt { color: var(--muted); } .facts dd { margin: 0; word-break: break-all; }
+  footer { padding: 28px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); }
+
+  @media (max-width: 720px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .grid3, .two { grid-template-columns: 1fr; }
+    header.hero { padding-top: 36px; }
+    .card { padding: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Computer vision → security of agentic AI</div>
+  <h1>Hawraa Moamin</h1>
+  <p class="lede">Computer-vision researcher (state-space models, biometrics, remote sensing) moving toward the security and trustworthiness of AI agents: what they see, who they act for, and how that can be verified.</p>
+  <div class="actions">
+    <a class="btn primary" href="cv.pdf" download>Download signed CV (PDF)</a>
+    <a class="btn" href="https://scholar.google.com/citations?user=vrdkXBIAAAAJ&hl=en">Google Scholar</a>
+    <a class="btn" href="mailto:hawraa.a.moamin@gmail.com">hawraa.a.moamin@gmail.com</a>
+  </div>
+</header>
+
+<!-- Verification -->
+<section id="verify" class="card" aria-live="polite">
+  <div class="vhead">
+    <span id="badge" class="badge">Checking…</span>
+    <h2>Is this CV authentic and unmodified?</h2>
+  </div>
+  <p class="vsub">Your browser is checking this right now with the Web Crypto API. Nothing is sent anywhere.</p>
+  <ol class="steps">
+    <li><span class="dot" id="d1">1</span><div><div class="st">Load the signed statement</div><div class="sd" id="s1"><code>manifest.json</code> names the file, its SHA-256 digest and the signer.</div></div></li>
+    <li><span class="dot" id="d2">2</span><div><div class="st">Verify the Ed25519 signature on the statement</div><div class="sd" id="s2">Only the holder of the private key could have produced this signature.</div></div></li>
+    <li><span class="dot" id="d3">3</span><div><div class="st">Hash the PDF you would download</div><div class="sd" id="s3">SHA-256 of <code>cv.pdf</code>, computed locally.</div></div></li>
+    <li><span class="dot" id="d4">4</span><div><div class="st">Compare the two digests</div><div class="sd" id="s4">If one bit of the PDF changed, the digests would not match.</div></div></li>
+  </ol>
+  <div class="tamper">
+    <button id="tamperBtn" type="button" disabled>Try it: flip one bit of the PDF and re-check</button>
+    <div id="tamperOut"></div>
+  </div>
+</section>
+
+<!-- CV -->
+<section class="cv">
+  <div class="stats">
+    <div class="stat"><div class="n">2</div><div class="l">peer-reviewed journal papers, <i>Franklin Open</i> (2025, 2026)</div></div>
+    <div class="stat"><div class="n">4.00/4.00</div><div class="l">M.Sc. CGPA; B.Sc. CGPA 3.82</div></div>
+  </div>
+
+  <h3 class="sec">Research direction</h3>
+  <div class="grid3">
+    <div class="card"><b>Multimodal attack surface of agents</b><p>How images, screenshots and on-screen text can steer computer-use agents (visual prompt injection, adversarial content), and how to detect or contain it.</p></div>
+    <div class="card"><b>Private identity for delegation</b><p>Letting an agent prove it acts for a specific, consenting human (biometrics, liveness) without exposing the biometric data, using FHE or secure computation.</p></div>
+    <div class="card"><b>Efficient vision for private inference</b><p>Small, strong models (e.g., Vision Mamba at ~7M parameters) that make on-device or encrypted inference practical for agents that see.</p></div>
+  </div>
+
+  <h3 class="sec">Publications</h3>
+  <div class="entry">
+    <div>A. S. Altaher, <span class="me">H. Moamin</span>, M. Khalid, A. Altaher, C. Bang, H. Altaher, M. T. Jan, H. Zhuang. <b>“Vision Mamba’s superior performance in aerial scene classification: An evaluation across datasets.”</b> <i>Franklin Open</i>, vol. 16, 100643, 2026.</div>
+    <p><span class="pill">Published</span><a href="https://doi.org/10.1016/j.fraope.2026.100643">doi:10.1016/j.fraope.2026.100643</a> · conceptualization, methodology, writing</p>
+  </div>
+  <div class="entry">
+    <div>C. Bang, A. S. Altaher, A. Altaher, <span class="me">H. Moamin</span>, T. Alshammari, B. Alkanjr, H. Altaher, M. G. Al-Jassani, H. Zhuang. <b>“Finger knuckle print classification: Leveraging vision Mamba for low complexity and high accuracy.”</b> <i>Franklin Open</i>, 100261, 2025.</div>
+    <p><span class="pill">Published</span><a href="https://doi.org/10.1016/j.fraope.2025.100261">doi:10.1016/j.fraope.2025.100261</a> · conceptualization, methodology, writing</p>
+  </div>
+  <div class="entry">
+    <div><b>Real-time American Sign Language translation combining signal and image processing, with a mobile app interface.</b></div>
+    <p><span class="pill soft">In preparation</span>Deep-learning pipeline fusing signal- and image-based features for live translation, delivered through an app.</p>
+  </div>
+
+  <h3 class="sec">Research projects</h3>
+  <div class="entry">
+    <div class="row"><span class="what">Aerial scene classification with Vision Mamba</span><span class="when">Feb 2024 – May 2024</span></div>
+    <div class="where">Prof. Hanqi Zhuang’s group, EECS, Florida Atlantic University</div>
+    <p>Benchmarked Vision Mamba against established CNN and transformer models on AID (30 classes) and NWPU-RESISC45 (45 classes): 96.59% and 94.81% with ~7M parameters (ResNet50: 25M; ViT: 86M), and handled AID’s class imbalance.</p>
+  </div>
+  <div class="entry">
+    <div class="row"><span class="what">Finger-knuckle-print biometric recognition</span><span class="when">Jan 2023 – Mar 2023</span></div>
+    <div class="where">Prof. Hanqi Zhuang’s group, EECS, Florida Atlantic University</div>
+    <p>Evaluated Vision Mamba against 17 pretrained networks on the PolyU FKP dataset (7,920 images, 165 subjects): 99.1% accuracy vs. AlexNet 96.2%, EfficientNet 98.0%, SCNN 98.3%, and robust when parts of the knuckle are occluded.</p>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3 class="sec">Experience</h3>
+      <div class="entry"><div class="row"><span class="what">Engineer</span><span class="when">Oct 2024 – Sep 2026</span></div><div class="where">Ministry of Education, Iraq</div><p>Programming projects; process optimization and new technical solutions.</p></div>
+      <div class="entry"><div class="row"><span class="what">Lecturer</span><span class="when">Apr 2024 – Oct 2024</span></div><div class="where">Sadr Iraq University College, Iraq</div><p>Lectures and workshops on programming languages.</p></div>
+      <div class="entry"><div class="row"><span class="what">Lecturer</span><span class="when">Feb 2024 – Apr 2024</span></div><div class="where">Ashur University, Iraq</div><p>Lectures and workshops on digital electronics and engineering concepts.</p></div>
+      <h3 class="sec">Education</h3>
+      <div class="entry"><div class="row"><span class="what">M.Sc. Computer Engineering (Software)</span><span class="when">2020 – 2021</span></div><div class="where">Imam Reza University, Iran · CGPA 4.00/4.00</div><p>Thesis: COVID-19 patient diagnosis with CPDS features and KNN classification.</p></div>
+      <div class="entry"><div class="row"><span class="what">B.Sc. Computer Engineering</span><span class="when">2015 – 2019</span></div><div class="where">Al-Mustansiriya University, Iraq · CGPA 3.82</div></div>
+    </div>
+    <div>
+      <h3 class="sec">Skills</h3>
+      <dl class="skills">
+        <dt>Deep learning &amp; vision</dt><dd>Image classification, Vision Mamba / state-space models, vision transformers, transfer learning, biometrics, remote sensing, class imbalance</dd>
+        <dt>Security &amp; cryptography (foundations)</dt><dd>SHA-256, Ed25519 signatures, signed attestations, public-key distribution. This page is the worked example.</dd>
+        <dt>Programming</dt><dd>Python, C++, MATLAB, JavaScript, Visual Basic; Linux and Windows</dd>
+        <dt>Data</dt><dd>Data analysis, data engineering, tabular prediction</dd>
+        <dt>Teaching</dt><dd>University lecturing; workshops for data science and developer communities</dd>
+        <dt>Languages</dt><dd>Arabic, English, Persian</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how cv">
+  <h3 class="sec">How the verification works</h3>
+  <ol>
+    <li><b>Hash.</b> SHA-256 turns the PDF into a 256-bit fingerprint. Finding a second file with the same digest is computationally infeasible, so the digest stands in for the file.</li>
+    <li><b>Sign a statement, not just bytes.</b> <code>manifest.json</code> says <i>who</i> signs, <i>what</i> (file name, size, digest) and <i>when</i>. I sign that statement with an Ed25519 private key that never leaves my computer.</li>
+    <li><b>Verify.</b> Anyone with the public key can check the signature and recompute the digest. A change to either the statement or the PDF makes verification fail.</li>
+  </ol>
+  <div class="callout">
+    <b>What this does not prove.</b> A valid signature shows the file was approved by whoever holds this key. It does not by itself show that the key is mine: someone who controlled this website could replace the PDF, the manifest <i>and</i> the key together. That is the key-distribution problem, so I also publish the key fingerprint through separate channels (my GitHub profile and on request by email) for you to compare. It also says nothing about confidentiality; the CV is public on purpose.
+  </div>
+  <p>The same three questions (who signed, what exactly was signed, and why trust that key) are the ones an AI agent faces before acting on another agent’s message or on a user’s delegated authority. That is the problem I want to work on.</p>
+
+  <h3 class="sec">Check it yourself, without this page</h3>
+  <dl class="facts">
+    <dt>Algorithm</dt><dd>Ed25519 over the exact bytes of <code>manifest.json</code></dd>
+    <dt>Key fingerprint</dt><dd class="mono" id="fp">loading…</dd>
+    <dt>Signed at</dt><dd class="mono" id="signedAt">loading…</dd>
+    <dt>Files</dt><dd><a href="manifest.json">manifest.json</a> · <a href="manifest.sig">manifest.sig</a> · <a href="public_key.pem">public_key.pem</a> · <a href="verify.py">verify.py</a> · <a href="sign.py">sign.py</a></dd>
+  </dl>
+<pre><code># OpenSSL 3.x
+openssl pkeyutl -verify -pubin -inkey public_key.pem -rawin \
+        -in manifest.json -sigfile manifest.sig
+sha256sum cv.pdf     # must equal "sha256" in manifest.json
+
+# or Python
+pip install cryptography &amp;&amp; python verify.py</code></pre>
+</section>
+
+<footer>Hawraa Moamin · South Florida · <a href="mailto:hawraa.a.moamin@gmail.com">hawraa.a.moamin@gmail.com</a></footer>
+</div>
+
+<script type="module">
+const $ = (id) => document.getElementById(id);
+const hex = (buf) => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+const b64ToBytes = (s) => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const setStep = (n, ok, html) => { $("d" + n).className = "dot " + (ok ? "ok" : "bad"); $("d" + n).textContent = ok ? "✓" : "✕"; if (html) $("s" + n).innerHTML = html; };
+const badge = (cls, text) => { $("badge").className = "badge " + cls; $("badge").textContent = text; };
+
+async function fetchBytes(path) {
+  const r = await fetch(path, { cache: "no-store" });
+  if (!r.ok) throw new Error(path + ": HTTP " + r.status);
+  return new Uint8Array(await r.arrayBuffer());
+}
+
+// Ed25519 verify: native Web Crypto first; fall back to the audited @noble/ed25519 library for older browsers.
+async function ed25519Verify(pubRaw, sig, msg) {
+  try {
+    const key = await crypto.subtle.importKey("raw", pubRaw, { name: "Ed25519" }, false, ["verify"]);
+    return { ok: await crypto.subtle.verify({ name: "Ed25519" }, key, sig, msg), via: "Web Crypto (native)" };
+  } catch (e) {
+    if (e && e.name !== "NotSupportedError" && e.name !== "DataError" && e.name !== "TypeError") throw e;
+    const ed = await import("https://cdn.jsdelivr.net/npm/@noble/ed25519@2.1.0/+esm");
+    return { ok: await ed.verifyAsync(sig, msg, pubRaw), via: "@noble/ed25519 (fallback)" };
+  }
+}
+
+let pdfBytes, expected;
+
+(async () => {
+  try {
+    const [mBytes, sig, pkJson] = await Promise.all([fetchBytes("manifest.json"), fetchBytes("manifest.sig"), fetch("public_key.json").then(r => r.json())]);
+    const m = JSON.parse(new TextDecoder().decode(mBytes));
+    expected = m.sha256;
+    $("fp").textContent = pkJson.fingerprint;
+    $("signedAt").textContent = m.signed_at;
+    setStep(1, true, `Signer <b>${m.subject}</b> · file <code>${m.document}</code> · signed ${m.signed_at}<div class="hash mono">${m.sha256}</div>`);
+
+    const v = await ed25519Verify(b64ToBytes(pkJson.public_key_base64), sig, mBytes);
+    setStep(2, v.ok, v.ok ? `Valid signature from key <span class="mono">${pkJson.fingerprint}</span> · checked with ${v.via}`
+                          : `Signature does not match key <span class="mono">${pkJson.fingerprint}</span>.`);
+    if (!v.ok) return badge("bad", "✕ Not verified");
+
+    pdfBytes = await fetchBytes(m.document);
+    const got = hex(await crypto.subtle.digest("SHA-256", pdfBytes));
+    setStep(3, true, `${pdfBytes.length.toLocaleString()} bytes hashed in your browser<div class="hash mono">${got}</div>`);
+
+    const match = got === expected;
+    setStep(4, match, match ? "Digests are identical. The PDF is exactly the file that was signed." : "Digests differ. The PDF was changed after signing.");
+    badge(match ? "ok" : "bad", match ? "✓ Verified" : "✕ Modified");
+    $("tamperBtn").disabled = !match;
+  } catch (err) {
+    badge("bad", "Could not verify");
+    $("s1").innerHTML = `Error: ${err.message}. If you opened this file directly from disk, serve it over HTTP instead (e.g. <code>python -m http.server</code>).`;
+  }
+})();
+
+$("tamperBtn").addEventListener("click", async () => {
+  const copy = pdfBytes.slice();
+  const pos = Math.floor(copy.length / 2);
+  copy[pos] ^= 0x01; // flip the lowest bit of one byte in the middle of the file
+  const got = hex(await crypto.subtle.digest("SHA-256", copy));
+  let bits = 0;
+  for (let i = 0; i < 64; i++) { let x = parseInt(got[i], 16) ^ parseInt(expected[i], 16); while (x) { bits += x & 1; x >>= 1; } }
+  const marked = [...got].map((c, i) => c === expected[i] ? c : `<span class="diff">${c}</span>`).join("");
+  $("tamperOut").innerHTML =
+    `<b style="color:var(--bad)">✕ Verification fails.</b> Flipping 1 bit at byte ${pos.toLocaleString()} (of ${copy.length.toLocaleString()}) changed <b>${bits} of 256</b> digest bits (about half, as expected for a good hash: the avalanche effect).` +
+    `<div class="hash mono">signed:&nbsp;&nbsp;${expected}</div><div class="hash mono">tampered: ${marked}</div>` +
+    `<div class="sd">The original file is untouched; this test only changes an in-memory copy.</div>`;
+});
+</script>
+</body>
+</html>

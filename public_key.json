@@ -1,0 +1,6 @@
+{
+  "algorithm": "Ed25519",
+  "public_key_base64": "RNqTxZQ85zX4y/GxfZCuSqdUafSOHB4COeJKGOvFeWg=",
+  "fingerprint": "5b02:de76:4518:28e2:4547:dee6:f13b:ba19",
+  "fingerprint_definition": "first 128 bits of SHA-256(raw 32-byte public key)"
+}

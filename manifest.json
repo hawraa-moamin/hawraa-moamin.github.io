@@ -1,0 +1,12 @@
+{
+  "bytes": 79813,
+  "contact": "hawraa.a.moamin@gmail.com",
+  "document": "cv.pdf",
+  "key_fingerprint": "5b02:de76:4518:28e2:4547:dee6:f13b:ba19",
+  "sha256": "0cf49abb7e5222e07ccf9885975eef327fb3a66fd4d8385e8eada0bdd4689d9a",
+  "signature_algorithm": "Ed25519",
+  "signed_at": "2026-11-03T02:17:58Z",
+  "statement": "I, Hawraa Moamin, attest that the file named above, identified by its SHA-256 digest, is my current CV.",
+  "subject": "Hawraa Moamin",
+  "type": "signed-cv/v1"
+}
